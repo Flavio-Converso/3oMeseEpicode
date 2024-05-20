@@ -10,8 +10,17 @@ class User {
     ricarica(n) {
         this.credito += n;
     }
+    chiamata(minutiChiamata) {
+        let costo = this.costoMinuto * minutiChiamata;
+        this.credito -= costo;
+        this.numeroChiamate += minutiChiamata;
+    }
+    get chiama404() {
+        return "il credito reisduo è di: " + this.credito + "€";
+    }
 }
 const user1 = new User("Mario", "Rossi");
 console.log("credito pre-ricarica: " + user1.credito);
 user1.ricarica(10);
-console.log("credito post-ricarica " + user1.credito);
+user1.chiamata(5);
+console.log(user1.chiama404);

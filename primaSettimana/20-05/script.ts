@@ -20,5 +20,4 @@ class User implements iSmartPhone{
 const user1 = new User("Mario","Rossi");
 console.log("credito pre-ricarica: "+user1.credito);
 user1.ricarica(10);
-
 console.log("credito post-ricarica "+user1.credito);

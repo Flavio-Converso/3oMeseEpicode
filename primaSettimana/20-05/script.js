@@ -18,6 +18,12 @@ class User {
     get chiama404() {
         return "il credito reisduo è di: " + this.credito + "€";
     }
+    getNumeroChiamate() {
+        return this.numeroChiamate;
+    }
+    azzeranumeroChiamate() {
+        this.numeroChiamate = 0;
+    }
 }
 const user1 = new User("Mario", "Rossi");
 console.log("credito pre-ricarica: " + user1.credito);

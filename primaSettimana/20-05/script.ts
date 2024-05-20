@@ -24,7 +24,13 @@ class User implements iSmartPhone{
       }
  get chiama404():string{
     return "il credito reisduo è di: " +this.credito + "€";
-    }   
+    } 
+    getNumeroChiamate():number {
+        return this.numeroChiamate;
+    }  
+    azzeranumeroChiamate(){
+        this.numeroChiamate=0;
+    }
 }  
 
 const user1 = new User("Mario","Rossi");

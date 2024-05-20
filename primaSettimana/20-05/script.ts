@@ -28,7 +28,7 @@ class User implements iSmartPhone {
   getNumeroChiamate(): number {
     return this.numeroChiamate;
   }
-  azzeranumeroChiamate() {
+  azzeranumeroChiamate(): void {
     this.numeroChiamate = 0;
   }
 }

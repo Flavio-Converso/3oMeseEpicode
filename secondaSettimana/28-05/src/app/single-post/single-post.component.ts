@@ -8,7 +8,6 @@ import { PostInterface } from 'src/interfaces/post.interface';
 })
 export class SinglePostComponent {
   @Input() post!: PostInterface;
-
   edit: Boolean = false;
 
   toggleEdit() {

@@ -10,13 +10,14 @@ import { BlogService } from '../blog.service';
 })
 export class HomepageComponent {
   editPost() {
-    throw new Error('Method not implemented.');
+    this.singlePost.toggleEdit();
   }
   constructor(private blogSvc: BlogService) {}
 
   post!: PostInterface;
   related: PostInterface[] = [];
   posts = this.blogSvc.posts;
+
   @ViewChild('singlePost') singlePost!: SinglePostComponent;
 
   ngOnInit(): void {

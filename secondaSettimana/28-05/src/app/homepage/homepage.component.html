@@ -54,7 +54,9 @@
   </div>
 </div>
 <div>
-  <button class="btn btn-secondary mx-2" *ngFor="let tag of uniqueTags" (click)="filterPostsByTag(tag)">{{tag}}</button>
+  <button class="btn mx-2" *ngFor="let tag of uniqueTags"
+    [ngClass]="{'btn-secondary': tag !== selectedTag, 'btn-danger': tag === selectedTag}"
+    (click)="filterPostsByTag(tag)">{{tag}}</button>
 </div>
 <section class="row">
   <app-single-post #singlePost *ngFor="let post of filteredPosts, let i=index" [post]="post">

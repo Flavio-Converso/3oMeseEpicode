@@ -17,6 +17,7 @@ export class HomepageComponent {
   posts = this.blogSvc.posts;
   uniqueTags: string[] = [];
   filteredPosts: PostInterface[] = [];
+  selectedTag!: string;
 
   @ViewChildren(SinglePostComponent)
   singlePosts!: QueryList<SinglePostComponent>;
@@ -33,6 +34,7 @@ export class HomepageComponent {
   }
 
   filterPostsByTag(tag: string): void {
+    this.selectedTag = tag;
     this.filteredPosts = this.blogSvc.filterPostsByTag(tag);
   }
 }

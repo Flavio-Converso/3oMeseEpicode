@@ -34,7 +34,6 @@
       </h5>
       <ul class="list-group">
         <li class="list-group-item " *ngFor="let post of related">
-
           <a routerLink="/post/{{ post.id }}">🔗 {{ post.title }}</a>
           <br>
           <span class="badge bg-primary me-1 text-uppercase" *ngFor="let tag of post.tags || []">{{tag}}</span>
@@ -54,12 +53,15 @@
     </div>
   </div>
 </div>
+<div>
+  <button class="btn btn-secondary mx-2" *ngFor="let tag of uniqueTags" (click)="filterPostsByTag(tag)">{{tag}}</button>
+</div>
 <section class="row">
-  <app-single-post #singlePost *ngFor="let post of posts" [post]="post">
+  <app-single-post #singlePost *ngFor="let post of filteredPosts, let i=index" [post]="post">
     <div class="d-flex flex-column">
       <input type="text" [(ngModel)]="post.title" class="card-title form-control">
       <textarea cols="30" rows="5" class="card-text form-control" [(ngModel)]="post.body"></textarea>
-      <button class="btn btn-success mt-2" (click)="editPost()">SAVE</button>
+      <button class="btn btn-success mt-2" (click)="editPost(i)">SAVE</button>
     </div>
   </app-single-post>
 </section>

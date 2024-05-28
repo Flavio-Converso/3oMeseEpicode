@@ -1,3 +1,4 @@
+import { filter } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { PostInterface } from 'src/interfaces/post.interface';
 
@@ -5,6 +6,7 @@ import { PostInterface } from 'src/interfaces/post.interface';
   providedIn: 'root',
 })
 export class BlogService {
+  filterByTag: any;
   constructor() {}
   posts: PostInterface[] = [
     {
@@ -271,5 +273,21 @@ export class BlogService {
       randomPosts.push(this.posts[random]);
     }
     return randomPosts;
+  }
+
+  getUniqueTags() {
+    let tags: string[] = [];
+    this.posts.forEach((post) => {
+      tags = [...tags, ...post.tags.filter((tag) => !tags.includes(tag))];
+    });
+    return tags;
+  }
+
+  filterPostsByTag(tag: string): PostInterface[] {
+    if (tag) {
+      return this.posts.filter((post) => post.tags.includes(tag));
+    } else {
+      return this.posts;
+    }
   }
 }

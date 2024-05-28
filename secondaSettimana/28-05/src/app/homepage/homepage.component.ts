@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { PostInterface } from 'src/interfaces/post.interface';
 import { SinglePostComponent } from '../single-post/single-post.component';
 import { BlogService } from '../blog.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -9,19 +10,29 @@ import { BlogService } from '../blog.service';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent {
-  editPost() {
-    this.singlePost.toggleEdit();
-  }
   constructor(private blogSvc: BlogService) {}
 
   post!: PostInterface;
   related: PostInterface[] = [];
   posts = this.blogSvc.posts;
+  uniqueTags: string[] = [];
+  filteredPosts: PostInterface[] = [];
 
-  @ViewChild('singlePost') singlePost!: SinglePostComponent;
+  @ViewChildren(SinglePostComponent)
+  singlePosts!: QueryList<SinglePostComponent>;
 
   ngOnInit(): void {
     this.post = this.blogSvc.topPost;
     this.related = this.blogSvc.getRandomPosts(4);
+    this.uniqueTags = this.blogSvc.getUniqueTags();
+    this.filteredPosts = this.posts;
+  }
+
+  editPost(i: number) {
+    this.singlePosts.toArray()[i].toggleEdit();
+  }
+
+  filterPostsByTag(tag: string): void {
+    this.filteredPosts = this.blogSvc.filterPostsByTag(tag);
   }
 }

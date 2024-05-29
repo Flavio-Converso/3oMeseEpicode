@@ -25,6 +25,10 @@ export class ProductsService {
     if (!this.preferiti.some((p) => p.id === prodotto.id)) {
       this.preferiti.push(prodotto);
     }
-    console.log(this.preferiti);
+  }
+
+  // Get all favorite products
+  getFavorites(): iProdotti[] {
+    return this.preferiti;
   }
 }

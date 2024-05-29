@@ -9,6 +9,7 @@ import { ProductsService } from '../../products.service';
 })
 export class HomeComponent implements OnInit {
   prodotti: iProdotti[] = [];
+  preferiti: iProdotti[] = [];
 
   constructor(private prodottiSvc: ProductsService) {}
 
@@ -17,9 +18,12 @@ export class HomeComponent implements OnInit {
       this.prodotti = data;
       console.log(this.prodotti);
     });
+    this.preferiti = this.prodottiSvc.getFavorites();
   }
 
   aggiungiPreferito(prodotto: iProdotti) {
     this.prodottiSvc.addFavorite(prodotto);
+    this.preferiti = this.prodottiSvc.getFavorites();
+    console.log(this.preferiti);
   }
 }

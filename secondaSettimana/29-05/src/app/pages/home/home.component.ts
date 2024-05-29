@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { iProdotti } from '../../modules/iprodotti';
 import { ProductsService } from '../../products.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   prodotti: iProdotti[] = [];
-  preferiti: iProdotti[] = [];
+
   constructor(private prodottiSvc: ProductsService) {}
 
   ngOnInit() {
@@ -17,5 +17,9 @@ export class HomeComponent {
       this.prodotti = data;
       console.log(this.prodotti);
     });
+  }
+
+  aggiungiPreferito(prodotto: iProdotti) {
+    this.prodottiSvc.addFavorite(prodotto);
   }
 }

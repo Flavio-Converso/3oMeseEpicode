@@ -8,6 +8,7 @@ import { RandomColorDirective } from 'src/directives/randomColor.directive';
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
   imports: [BrowserModule, AppRoutingModule, RandomColorDirective],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
 })

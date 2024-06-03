@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { ActivePostsComponent } from './active-posts.component';
 import { RouterModule, Routes } from '@angular/router';
 

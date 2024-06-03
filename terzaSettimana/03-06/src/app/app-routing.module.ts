@@ -29,13 +29,6 @@ const routes: Routes = [
         (m) => m.InactivePostsModule
       ),
   },
-  {
-    path: 'post/:id',
-    loadChildren: () =>
-      import('./post-detail/post-detail.module').then(
-        (m) => m.PostDetailModule
-      ),
-  },
 ];
 
 @NgModule({

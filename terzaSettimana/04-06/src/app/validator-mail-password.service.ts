@@ -15,7 +15,7 @@ export class ValidatorMailPasswordService {
       ).test(control.value);
       return emailRegex
         ? null // se  valida
-        : { isValidEmail: false }; // se non valida
+        : { isValidEmail: "L'email selezionata non è valida" }; // se non valida
     };
     // [A-Za-z0-9._%+-]+: email deve iniziare con uno o più caratteri alfanumerici, punti, trattini bassi, percentuali, più o trattini.
     // @:  deve esserci una chiocciola, carattere obbligatorio
@@ -50,7 +50,10 @@ export class ValidatorMailPasswordService {
       ).test(control.value);
       return psw
         ? null //se valida
-        : { isValidPassword: false }; //se non valida
+        : {
+            isValidPassword:
+              'La password deve contenere caratteri speciali, un numero, una maiuscola e deve essere tra 8 e 16 caratteri.',
+          }; //se non valida
     };
     //Almeno una lettera maiuscola ((?=.*?[A-Z])).
     //Almeno una lettera minuscola ((?=.*?[a-z])).
